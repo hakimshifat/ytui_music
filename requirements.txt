@@ -1,0 +1,5 @@
+textual>=0.60
+textual-image>=0.2
+yt-dlp>=2024.10
+requests>=2.31
+python-mpv>=1.0
