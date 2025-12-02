@@ -42,7 +42,7 @@ python yt.py
 - `Left` / `Right` – seek -10s / +10s
 - `n` / `p` – next / previous result (auto-plays)
 - `s` – stop
-- `+` / `-` – volume up / down
+- `0` / `9` – volume up / down
 - `Ctrl+C` – quit
 
 ### Tips
