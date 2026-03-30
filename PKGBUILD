@@ -18,7 +18,7 @@ makedepends=(
     'python-setuptools'
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hakimshifat/ytui_music/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b374064d435d75b3d9cf6e03cb7f84ce4cf54a56aef2b396cb3456d668398110')
+sha256sums=('abbcb37c244fdcb1e69cf050e59a45cd3392536cdc473a3401d225153d3699a0')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
