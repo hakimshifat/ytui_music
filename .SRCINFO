@@ -1,0 +1,21 @@
+pkgbase = ytui-music
+	pkgdesc = A terminal-based YouTube audio player built with Textual and mpv
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/sifat00/ytui_music
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	depends = python
+	depends = python-textual
+	depends = python-textual-image
+	depends = python-yt-dlp
+	depends = python-requests
+	depends = python-mpv
+	depends = mpv
+	source = ytui-music-0.1.0.tar.gz::https://github.com/sifat00/ytui_music/archive/refs/tags/v0.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = ytui-music

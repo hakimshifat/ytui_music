@@ -1,0 +1,39 @@
+# Maintainer: Shifat <hakim.shifat@gmail.com>
+# Contributor: Abdul Hakim Shifat
+
+pkgname=ytui-music
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="A terminal-based YouTube audio player built with Textual and mpv"
+arch=('any')
+url="https://github.com/hakimshifat/ytui_music"
+license=('GPL-3.0-or-later')
+depends=(
+    'python'
+    'python-textual'
+    'python-textual-image'
+    'python-yt-dlp'
+    'python-requests'
+    'python-mpv'
+    'mpv'
+)
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/sifat00/ytui_music/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m build --wheel --no-isolation
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    
+    # Install the main script
+    install -Dm755 yt.py "$pkgdir/usr/bin/ytui-music"
+}
