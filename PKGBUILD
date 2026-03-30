@@ -28,8 +28,9 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
-    # Install the Python package with dependencies
-    pip install --root="$pkgdir" --ignore-installed --no-build-isolation dist/*.whl
+    # Install the Python package with dependencies (suppress pip warnings)
+    pip install --root="$pkgdir" --ignore-installed --no-build-isolation \
+        --no-warn-script-location dist/*.whl 2>/dev/null
     
     # Ensure the script is executable
     install -Dm755 yt.py "$pkgdir/usr/bin/ytui_music"
