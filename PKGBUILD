@@ -22,8 +22,8 @@ makedepends=(
     'python-installer'
     'python-setuptools'
 )
-source=("$pkgname-$pkgver.tar.gz::https://github.com/sifat00/ytui_music/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/hakimshifat/ytui_music/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('b374064d435d75b3d9cf6e03cb7f84ce4cf54a56aef2b396cb3456d668398110')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
