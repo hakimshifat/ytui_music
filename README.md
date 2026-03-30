@@ -1,55 +1,90 @@
-# YT TUI Player
+# YTUI Music
 
-My browser takes too much resources even when i just listen to audio. So i made this.
+A terminal-based YouTube audio player that's lightweight and keyboard-first. Search YouTube, browse results with inline thumbnails, and play audio with familiar controls.
 
-A terminal UI YouTube audio player built with Textual, mpv, and yt-dlp. Search YouTube, browse results with inline thumbnails, and play audio with familiar mpv-like controls (seek, volume, pause). Designed to stay keyboard-first and responsive in the terminal.
+![YTUI Music Screenshot 1](assets/yt1.png)
 
-![](assets/Pasted%20image%2020251202161743.png)
-
-![](assets/Pasted%20image%2020251202161838.png)
+![YTUI Music Screenshot 2](assets/yt2.png)
 
 ## Features
-- YouTube search with inline thumbnails and caching to avoid re-downloads.
-- Background workers for search, thumbnail fetch, and playback stream resolution.
-- Playback controls: play/pause, stop, next/prev selection, 10s seek forward/back, volume up/down.
-- Progress with elapsed/remaining time, percent, and playback state indicator.
-- Toast/status messages for errors, seeks, and searches; non-fatal workers to keep the app alive.
-- Keyboard-first: enter plays selection, space toggles, left/right seek, n/p navigate, s stops, +/- volume, ctrl+c quits.
+
+- YouTube search with inline thumbnails (cached per session)
+- Background workers for non-blocking operations
+- Compact UI showing more results per screen
+- Playback controls: play/pause, stop, next/prev, 10s seek, volume
+- Progress bar with elapsed/remaining time
+- Vim-style navigation keys
 
 ## Requirements
-- Python 3.11+
-- mpv installed on your system (for playback)
-- Dependencies listed in `requirements.txt`:
-  - textual
-  - textual-image
-  - yt-dlp
-  - requests
-  - python-mpv
 
-Install deps:
+- Python 3.11+
+- `mpv` installed on your system
+
+## Installation
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ## Usage
+
 ```bash
 python yt.py
 ```
 
 ### Keybindings
-- `Enter` – play selected result
-- `Space` – play/pause
-- `Left` / `Right` – seek -10s / +10s
-- `n` / `p` – next / previous result (auto-plays)
-- `s` – stop
-- `0` / `9` – volume up / down
-- `Ctrl+C` – quit
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Cycle focus (search ↔ results) |
+| `Enter` | Play selected result |
+| `Space` | Toggle play/pause |
+| `←` / `→` | Seek -10s / +10s |
+| `n` / `p` | Next / Previous (auto-play) |
+| `s` | Stop |
+| `0` / `9` | Volume up / down |
+| `Ctrl+C` | Quit |
+| `↑` / `↓` | Navigate results |
+
+#### Vim-style Navigation (when results list focused)
+
+| Key | Action |
+|-----|--------|
+| `j` | Move down |
+| `k` | Move up |
+| `g` | Jump to top |
+| `G` | Jump to bottom |
 
 ### Tips
-- Results list scrolls; use arrow keys or `n`/`p` to move.
-- Network/DNS errors show in the status line and notifications; the app keeps running.
-- Thumbnails are cached per video ID for this session.
 
-## Notes
-- The player fetches audio streams via yt-dlp; ensure your network/DNS can reach YouTube.
-- If bandwidth is limited, consider adding a `--no-thumb` flag (not included by default).
+- Use `Tab` to switch between search box and results list
+- Vim keys (`j`/`k`/`g`/`G`) only navigate, they don't autoplay
+- Use `n`/`p` to navigate + autoplay, or `Enter` to play selection
+- Network errors show as toasts; the app keeps running
+- Thumbnails are cached per video ID per session
+- Logs written to `player_debug.log` (ERROR level)
+
+## Project Structure
+
+```
+ytui_music/
+├── yt.py                 # Main entry point
+├── player/
+│   ├── __init__.py
+│   └── audio.py          # AudioPlayer (MPV wrapper)
+├── widgets/
+│   ├── __init__.py
+│   ├── search_result.py  # SearchResultItem widget
+│   ├── controls.py       # PlayerControls widget
+│   └── thumbnail.py      # ThumbnailWidget
+├── utils/
+│   ├── __init__.py
+│   ├── search.py         # YouTube search
+│   └── thumbnails.py     # Thumbnail fetching/caching
+└── css/
+    └── styles.tcss       # Application styles
+```
+
+## License
+
+GPL-3.0
