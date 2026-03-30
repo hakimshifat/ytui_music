@@ -7,7 +7,7 @@ name = "ytui_music"
 version = "0.1.0"
 description = "A terminal-based YouTube audio player built with Textual and mpv"
 readme = "README.md"
-license = {text = "GPL-3.0-or-later"}
+license = "GPL-3.0-or-later"
 authors = [
     {name = "Abdul Hakim Shifat", email = "hakim.shifat@gmail.com"}
 ]
@@ -16,7 +16,6 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: End Users/Desktop",
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
@@ -36,3 +35,6 @@ ytui_music = "yt:main"
 [project.urls]
 Homepage = "https://github.com/hakimshifat/ytui_music"
 Repository = "https://github.com/hakimshifat/ytui_music"
+
+[tool.setuptools.packages.find]
+include = ["player*", "widgets*", "utils*"]
