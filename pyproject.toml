@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ytui_music"
+version = "0.1.0"
+description = "A terminal-based YouTube audio player built with Textual and mpv"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+authors = [
+    {name = "Abdul Hakim Shifat", email = "hakim.shifat@gmail.com"}
+]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Sound/Audio :: Players",
+]
+dependencies = [
+    "textual>=0.60",
+    "textual-image>=0.2",
+    "yt-dlp>=2024.10",
+    "requests>=2.31",
+    "python-mpv>=1.0",
+]
+
+[project.scripts]
+ytui_music = "yt:main"
+
+[project.urls]
+Homepage = "https://github.com/hakimshifat/ytui_music"
+Repository = "https://github.com/hakimshifat/ytui_music"
