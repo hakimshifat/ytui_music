@@ -1,7 +1,7 @@
 # Maintainer: Shifat <hakim.shifat@gmail.com>
 # Contributor: Abdul Hakim Shifat
 
-pkgname=ytui-music
+pkgname=ytui_music
 pkgver=0.1.0
 pkgrel=1
 pkgdesc="A terminal-based YouTube audio player built with Textual and mpv"
@@ -33,7 +33,7 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     python -m installer --destdir="$pkgdir" dist/*.whl
-    
+
     # Install the main script
-    install -Dm755 yt.py "$pkgdir/usr/bin/ytui-music"
+    install -Dm755 yt.py "$pkgdir/usr/bin/ytui_music"
 }
