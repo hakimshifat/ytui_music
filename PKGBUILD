@@ -11,14 +11,6 @@ license=('GPL-3.0-or-later')
 depends=(
     'python'
     'mpv'
-    'python-textual'
-    'python-textual-image'
-    'python-yt-dlp'
-    'python-requests'
-    'python-mpv'
-    'python-pillow'
-    'python-rich'
-    'python-markdown-it-py'
 )
 makedepends=(
     'python-build'
@@ -36,8 +28,8 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
     
-    # Install only the main package (dependencies from Arch repos)
-    pip install --root="$pkgdir" --ignore-installed --no-deps --no-build-isolation \
+    # Install the Python package with dependencies
+    pip install --root="$pkgdir" --ignore-installed --no-build-isolation \
         --no-warn-script-location dist/*.whl 2>/dev/null
     
     # Ensure the script is executable

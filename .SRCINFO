@@ -10,14 +10,6 @@ pkgbase = ytui_music
 	makedepends = python-setuptools
 	depends = python
 	depends = mpv
-	depends = python-textual
-	depends = python-textual-image
-	depends = python-yt-dlp
-	depends = python-requests
-	depends = python-mpv
-	depends = python-pillow
-	depends = python-rich
-	depends = python-markdown-it-py
 	source = ytui_music-0.1.0.tar.gz::https://github.com/hakimshifat/ytui_music/archive/refs/tags/v0.1.0.tar.gz
 	sha256sums = abbcb37c244fdcb1e69cf050e59a45cd3392536cdc473a3401d225153d3699a0
 
