@@ -38,3 +38,4 @@ Repository = "https://github.com/hakimshifat/ytui_music"
 
 [tool.setuptools.packages.find]
 include = ["player*", "widgets*", "utils*"]
+exclude = ["css*", "assets*"]

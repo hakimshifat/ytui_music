@@ -11,7 +11,6 @@ Usage:
 import asyncio
 import logging
 from functools import partial
-from pathlib import Path
 
 from textual.app import App, ComposeResult
 from textual.containers import Container, Horizontal, Vertical
@@ -45,7 +44,144 @@ logging.basicConfig(
 class YTPlayerApp(App):
     """Main YouTube audio player application."""
 
-    CSS_PATH = Path(__file__).parent / "css" / "styles.tcss"
+    CSS = """
+    Screen {
+        layout: grid;
+        grid-size: 2;
+        grid-columns: 32% 68%;
+    }
+
+    #sidebar {
+        row-span: 2;
+        background: transparent;
+        border-right: solid white;
+        min-width: 36;
+        max-width: 48;
+    }
+
+    #search_input {
+        dock: top;
+        margin: 1;
+    }
+
+    #results_list {
+        height: 1fr;
+        align: left top;
+        padding: 0 1;
+        overflow-y: auto;
+    }
+
+    .result_item {
+        height: 4;
+        min-height: 4;
+        max-height: 4;
+        padding: 0;
+        border-bottom: solid gray 50%;
+    }
+
+    .result_item:hover {
+        background: gray 20%;
+    }
+
+    .result_item:focus {
+        outline: solid white;
+    }
+
+    .list_item_row {
+        align: left middle;
+        padding: 0;
+        width: 100%;
+    }
+
+    .thumb_box {
+        width: 8;
+        min-width: 8;
+        height: 3;
+        border: solid gray 50%;
+        align: center middle;
+        overflow: hidden;
+        margin-right: 1;
+    }
+
+    .list_item_label {
+        padding: 0 1;
+        text-overflow: ellipsis;
+    }
+
+    #main_area {
+        layout: vertical;
+        padding: 2;
+        align: center middle;
+    }
+
+    #thumbnail_container {
+        height: 60%;
+        width: 100%;
+        border: solid gray 50%;
+        margin-bottom: 2;
+        align: center middle;
+    }
+
+    #now_playing_row {
+        width: 100%;
+        align: left middle;
+    }
+
+    #now_playing_label {
+        text-align: left;
+        margin-bottom: 0;
+        color: white;
+        width: 1fr;
+    }
+
+    #state_label {
+        color: white;
+    }
+
+    #progress_container {
+        width: 100%;
+        margin-bottom: 2;
+        align: center middle;
+    }
+
+    #progress_bar {
+        width: 1fr;
+    }
+
+    #progress_label {
+        min-width: 6;
+        text-align: right;
+    }
+
+    #elapsed_label {
+        min-width: 6;
+        text-align: left;
+    }
+
+    #remaining_label {
+        min-width: 7;
+        text-align: right;
+    }
+
+    .controls_bar {
+        align: center middle;
+        height: auto;
+    }
+
+    Button {
+        margin: 0 1;
+    }
+
+    #status_line {
+        width: 100%;
+        color: yellow;
+        min-height: 1;
+    }
+
+    .header_label {
+        margin: 1;
+    }
+    """
 
     BINDINGS = [
         ("tab", "cycle_focus", "Cycle Focus"),
