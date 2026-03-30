@@ -10,11 +10,6 @@ url="https://github.com/hakimshifat/ytui_music"
 license=('GPL-3.0-or-later')
 depends=(
     'python'
-    'python-textual'
-    'python-textual-image'
-    'python-yt-dlp'
-    'python-requests'
-    'python-mpv'
     'mpv'
 )
 makedepends=(
@@ -32,8 +27,10 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
-
-    # Install the main script
+    
+    # Install the Python package with dependencies
+    pip install --root="$pkgdir" --ignore-installed --no-build-isolation dist/*.whl
+    
+    # Ensure the script is executable
     install -Dm755 yt.py "$pkgdir/usr/bin/ytui_music"
 }
