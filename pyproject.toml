@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ytui_music"
-version = "0.1.0"
+version = "0.1.1"
 description = "A terminal-based YouTube audio player built with Textual and mpv"
 readme = "README.md"
 license = "GPL-3.0-or-later"
@@ -35,6 +35,9 @@ ytui_music = "yt:main"
 [project.urls]
 Homepage = "https://github.com/hakimshifat/ytui_music"
 Repository = "https://github.com/hakimshifat/ytui_music"
+
+[tool.setuptools]
+py-modules = ["yt"]
 
 [tool.setuptools.packages.find]
 include = ["player*", "widgets*", "utils*"]
