@@ -9,18 +9,16 @@ arch=('any')
 url="https://github.com/hakimshifat/ytui_music"
 license=('GPL-3.0-or-later')
 
-# Dependencies: 
-# - official repositories: python, mpv, python-textual, python-mpv, yt-dlp, python-requests, python-pillow
-# - AUR repositories: python-textual-image
+# All dependencies from official repos (no AUR dependencies)
 depends=(
     'python'
     'mpv'
     'python-textual'
+    'python-textual-image'
     'python-mpv'
     'yt-dlp'
     'python-requests'
     'python-pillow'
-    'python-textual-image'
 )
 
 makedepends=(
@@ -41,7 +39,6 @@ build() {
 package() {
     cd "$srcdir/$pkgname-$pkgver"
 
-    # Install the built wheel to $pkgdir
-    # --no-deps ensures we use the system dependencies listed above
+    # Install wheel - dependencies are handled by pacman
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

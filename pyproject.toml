@@ -38,7 +38,7 @@ Repository = "https://github.com/hakimshifat/ytui_music"
 
 [tool.setuptools]
 py-modules = ["yt"]
+packages = ["player", "widgets", "utils"]
 
-[tool.setuptools.packages.find]
-include = ["player*", "widgets*", "utils*"]
-exclude = ["css*", "assets*"]
+[tool.setuptools.package-dir]
+"" = "."
